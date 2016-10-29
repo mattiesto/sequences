@@ -16,18 +16,22 @@
 
 <p>Now it’s your turn. Enter a number sequence in the boxes below, and we’ll tell you whether it satisfies the rule or not. You can test as many sequences as you want.</p>
 
-<ul>
-  <li>
-    <%= @user_guess1 %>, <%= @user_guess2 %>, <%= @user_guess3 %>
 
-    <% if params["first_number"] < params["second_number"] && params["second_number"] < params["third_number"] %>
-    Yes.
-    <% else %>
-    No.
-    <% end %>
+<% @list.each do |guess| %>
+<li>
+  <%= guess.first_num %>,
+  <%= guess.second_num %>,
+  <%= guess.third_num %>
 
-  </li>
-</ul>
+  <% if params["first_number"] < params["second_number"] && params["second_number"] < params["third_number"] %>
+  Yes!
+  <% else %>
+  No.
+  <% end %>
+
+</li>
+<% end %>
+
 
 <form action="all_guesses">
   <p>

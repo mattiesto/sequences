@@ -2,9 +2,12 @@ class GuessesController < ApplicationController
   def index
     # params = {"first_number"=>"4","second_number"=>"3","third_number"=>"2"}
 
-    @user_guess1 = params["first_number"]
-    @user_guess2 = params["second_number"]
-    @user_guess3 = params["third_number"]
+    g= Guess.new
+    g.first_num = params["first_number"]
+    g.second_num = params["second_number"]
+    g.third_num = params["third_number"]
+    g.save
+    @list = Guess.all
 
     render("guesses/index.html.erb")
   end
