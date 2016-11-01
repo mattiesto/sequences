@@ -6,7 +6,10 @@ class GuessesController < ApplicationController
     g.first_num = params["first_number"]
     g.second_num = params["second_number"]
     g.third_num = params["third_number"]
-    g.save
+    if g.first_num != nil
+      g.save
+    else
+    end
     @list = Guess.all
 
     render("guesses/index.html.erb")
